@@ -5,6 +5,8 @@ Updates to Lion Telescope Studio, newest first. The project has no version numbe
 ## 2026-10-16 — Support section
 
 - README: a **Support the project** section with the Stripe donation link, a GitHub stars badge and a star-history chart.
+- README: the **33-second tour** video with a preview loop at the top, plus **Roadmap**, **Repository** and **License** sections,
+  matching Lion Satellite Studio.
 
 ## 2026-10-16 — First public release
 

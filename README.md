@@ -32,8 +32,10 @@ where Webb and Chandra are pointing right now. One small Python server, any brow
   <a href="#support-the-project">Support</a>
 </p>
 
-<p align="center"><img src="docs/images/hero.webp" width="100%" alt="The Crab Nebula with the point report open: the same spot in nine kinds of light, from X-rays to radio"><br>
-<sub>The Crab Nebula, with the point report's strip of the same spot in nine kinds of light. Sky: DSS2 (STScI/NASA, CDS).</sub></p>
+<p align="center"><a href="docs/media/lion-telescope-studio.mp4"><img src="docs/media/preview.webp" width="100%" alt="Lion Telescope Studio: the same sky stepping through every kind of light, from gamma rays to radio"></a><br>
+<sub>▶ <a href="docs/media/lion-telescope-studio.mp4"><b>Watch the 33-second tour</b></a> (MP4, 1080p, with an original score made in
+<a href="https://github.com/sunnychase/lion-ai-studios">Lion AI Studios</a>): the sky in twelve kinds of light, the point report,
+gravitational waves, Webb's Cosmic Cliffs. Every frame is the app itself.</sub></p>
 
 Lion Telescope Studio puts the public archives of the world's observatories behind one sky. The sky itself is
 [Aladin Lite](https://aladin.cds.unistra.fr/AladinLite/) from CDS Strasbourg, showing all-sky surveys from Fermi to Planck;
@@ -54,6 +56,9 @@ satellite.js and the fonts are in the repository. Sky tiles stream from the surv
 To run it as a service that starts with your computer, see [systemd/lion-telescope-studio.service](systemd/lion-telescope-studio.service).
 
 ## What it does
+
+<p align="center"><img src="docs/images/hero.webp" width="100%" alt="The Crab Nebula with the point report open: the same spot in nine kinds of light, from X-rays to radio"><br>
+<sub>The Crab Nebula, with the point report's strip of the same spot in nine kinds of light. Sky: DSS2 (STScI/NASA, CDS).</sub></p>
 
 ### 1. The sky in every kind of light
 
@@ -200,6 +205,30 @@ copy of it.
 **Where do the sky pictures come from?** From the survey servers themselves, straight to your browser through Aladin Lite;
 this server never touches the tiles.
 
+## Roadmap
+
+- **Tonight in the chosen city's time zone** (today it uses the browser's), and the Sun panel showing each image's own date.
+- **Swift bursts and the Fink broker** back in the live feeds as soon as their upstream tables and API are current again.
+- **The next gravitational-wave run**: alerts and sky maps appear on their own; the plan is a short history view per event.
+- **SAMP hand-off** of a clicked spot or catalogue to desktop tools such as TOPCAT and DS9.
+- **More showpieces** as new public releases land (Rubin, Euclid, Webb).
+
+Ideas and pull requests are welcome: see [Contributing](#contributing).
+
+## Repository
+
+```
+server.py                 the web server and cached archive proxies: one file, standard library only
+votable.py                VOTable reader (TABLEDATA, BINARY, BINARY2) for TAP answers
+static/                   the page: index.html, css/, js/ (ES modules), data/ (observatories), img/, fonts/,
+                          vendor/ (Aladin Lite 3.6.5, astronomy-engine, CesiumJS, satellite.js; unmodified)
+scripts/                  check.sh (the CI checks), precompress.py
+systemd/                  example user unit
+docs/images/              logo and screenshots
+docs/media/               the 33 s tour (MP4) and the README preview loop
+telescope.env.example     every setting, with comments
+```
+
 ## Contributing
 
 Bug reports, fixes and new sources are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md). Security problems: [SECURITY.md](SECURITY.md).
@@ -232,3 +261,10 @@ Created by [Sunny Chase](https://github.com/sunnychase) in collaboration with Cl
 © CDS, Université de Strasbourg/CNRS. This research has made use of the SIMBAD database and the "Aladin sky atlas" developed
 at CDS, Strasbourg Observatory, France; of the NASA Exoplanet Archive; of data from the ESA mission Gaia; of MAST at STScI; of
 the ESO Science Archive Facility; and of HEASARC at NASA/GSFC. Full list: [NOTICE.md](NOTICE.md).
+
+## License
+
+The code in this repository is under the [GNU General Public License v3.0 or later](LICENSE), because the page bundles and
+imports Aladin Lite (GPL-3.0). astronomy-engine (MIT), CesiumJS (Apache-2.0), satellite.js (MIT) and the fonts (SIL OFL 1.1)
+are included under their own terms; see [NOTICE.md](NOTICE.md). The sky surveys and archive data the app shows belong to their
+providers and keep their licences; some (the Mellinger survey, the Gaia DR3 colour map, Euclid Q1) do not allow commercial reuse.

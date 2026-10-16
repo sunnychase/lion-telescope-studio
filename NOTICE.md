@@ -78,6 +78,12 @@ AKARI), and the eROSITA, MeerKAT, Rubin and JWST/HST/Euclid releases. The survey
 | Deep-space positions | JPL Horizons API | NASA/JPL-Caltech Solar System Dynamics. |
 | Earth view imagery | Natural Earth II, bundled with CesiumJS | Natural Earth, public domain. |
 
+## Project media
+
+- `docs/media/lion-telescope-studio.mp4` and `docs/media/preview.webp`: the 33 s tour, recorded from the app itself. Its score is
+  original, made with ACE-Step 1.5 (Apache-2.0) in [Lion AI Studios](https://github.com/sunnychase/lion-ai-studios). The images
+  in it are the surveys and showpieces credited above, shown under the same terms.
+
 ## Trademarks
 
 Names of observatories, missions and agencies are used only to say where data comes from. Their logos are not used. "Lion
