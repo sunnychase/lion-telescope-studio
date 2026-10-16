@@ -16,6 +16,7 @@ where Webb and Chandra are pointing right now. One small Python server, any brow
   <a href="#requirements"><img src="https://img.shields.io/badge/server-Python%20standard%20library-success?style=flat-square" alt="Server: Python standard library only"></a>
   <a href="#data-sources-and-licences"><img src="https://img.shields.io/badge/data-open%20(CDS%20%C2%B7%20NASA%20%C2%B7%20ESA%20%C2%B7%20ESO)-0B3D91?style=flat-square" alt="Data: open (CDS, NASA, ESA, ESO)"></a>
   <a href="https://github.com/sunnychase/lion-telescope-studio/commits/main"><img src="https://img.shields.io/github/last-commit/sunnychase/lion-telescope-studio?style=flat-square" alt="Last commit"></a>
+  <a href="https://github.com/sunnychase/lion-telescope-studio"><img src="https://img.shields.io/github/stars/sunnychase/lion-telescope-studio?style=flat-square" alt="GitHub stars"></a>
   <a href="https://donate.stripe.com/fZuaER2Cbecw7cQ6PlfEk00"><img src="https://img.shields.io/badge/donate-Stripe-635BFF?style=flat-square&logo=stripe&logoColor=white" alt="Donate with Stripe"></a>
 </p>
 
@@ -27,7 +28,8 @@ where Webb and Chandra are pointing right now. One small Python server, any brow
   <a href="#data-sources-and-licences">Data &amp; licences</a> ·
   <a href="#known-limits">Known limits</a> ·
   <a href="#faq">FAQ</a> ·
-  <a href="#contributing">Contributing</a>
+  <a href="#contributing">Contributing</a> ·
+  <a href="#support-the-project">Support</a>
 </p>
 
 <p align="center"><img src="docs/images/hero.webp" width="100%" alt="The Crab Nebula with the point report open: the same spot in nine kinds of light, from X-rays to radio"><br>
@@ -205,6 +207,24 @@ Changes are listed in [CHANGELOG.md](CHANGELOG.md).
 
 Sibling projects: [Lion AI Studios](https://github.com/sunnychase/lion-ai-studios) (local video, image and music generation)
 and [Lion Satellite Studio](https://github.com/sunnychase/lion-satellite-studio) (open satellite data on a 3D globe).
+
+## Support the project
+
+Lion Telescope Studio is free and open source. If it is useful to you, a donation helps keep it and its sibling projects going.
+
+<p><a href="https://donate.stripe.com/fZuaER2Cbecw7cQ6PlfEk00"><img src="https://img.shields.io/badge/Donate%20with-Stripe-635BFF?style=for-the-badge&logo=stripe&logoColor=white" alt="Donate with Stripe"></a></p>
+
+Starring the repository and sharing a sky view (the share link keeps the place, survey and blend) help too.
+
+## Star history
+
+<a href="https://www.star-history.com/#sunnychase/lion-telescope-studio&Date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=sunnychase/lion-telescope-studio&type=Date&theme=dark">
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=sunnychase/lion-telescope-studio&type=Date">
+    <img alt="Lion Telescope Studio star history" src="https://api.star-history.com/svg?repos=sunnychase/lion-telescope-studio&type=Date" width="600">
+  </picture>
+</a>
 
 ## Credits
 

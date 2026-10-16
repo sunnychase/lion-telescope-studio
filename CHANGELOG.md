@@ -2,6 +2,10 @@
 
 Updates to Lion Telescope Studio, newest first. The project has no version numbers; each entry is dated.
 
+## 2026-10-16 — Support section
+
+- README: a **Support the project** section with the Stripe donation link, a GitHub stars badge and a star-history chart.
+
 ## 2026-10-16 — First public release
 
 - **The sky in every kind of light**: a twelve-step spectrum ladder from Fermi gamma rays to radio, with sharper surveys
