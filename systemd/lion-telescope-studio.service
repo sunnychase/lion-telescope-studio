@@ -1,0 +1,25 @@
+# Lion Telescope Studio as a systemd *user* service.
+# Install:  mkdir -p ~/.config/systemd/user && cp systemd/lion-telescope-studio.service ~/.config/systemd/user/
+#           edit the two paths below if you cloned somewhere other than ~/lion-telescope-studio
+#           systemctl --user daemon-reload && systemctl --user enable --now lion-telescope-studio
+# Logs:     journalctl --user -u lion-telescope-studio -f
+# Keep it running after you log out:  loginctl enable-linger "$USER"
+[Unit]
+Description=Lion Telescope Studio - the sky as the world's open telescopes see it
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=%h/lion-telescope-studio
+EnvironmentFile=-%h/lion-telescope-studio/telescope.env
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 %h/lion-telescope-studio/server.py
+Restart=on-failure
+RestartSec=10
+Nice=10
+MemoryMax=1200M
+UMask=0077
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,53 @@
+name: Bug report
+description: Something in the sky, a report or the server does not work as described
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        One problem per report, please. Remove personal paths, addresses and your location from anything you paste.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Before you file
+      options:
+        - label: I searched the open and closed issues for the same problem.
+          required: true
+        - label: I removed personal paths, addresses and my location from this report.
+          required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Sky, surveys or the spectrum ladder
+        - Point report (SIMBAD, Gaia, planets, who looked here)
+        - Live (gravitational waves, gamma-ray flashes, supernovae, the Sun)
+        - Telescopes (pointing, Earth view)
+        - Tonight
+        - Server, cache or installation
+        - Phone layout
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened, and what did you expect?
+      description: Include the view link (the address bar keeps the position and survey) if it helps.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: "1. Search M31\n2. Click the core\n3. ..."
+  - type: input
+    id: env
+    attributes:
+      label: Browser, device and OS; Python version; commit
+  - type: textarea
+    id: log
+    attributes:
+      label: Server log or browser console (trimmed)
+      render: text

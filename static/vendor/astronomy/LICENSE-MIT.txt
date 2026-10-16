@@ -1,0 +1,5 @@
+MIT License
+
+Copyright (c) 2019-2025 Don Cross <cosinekitty@gmail.com>
+
+astronomy-engine — https://github.com/cosinekitty/astronomy (license: MIT, as declared in its package.json).

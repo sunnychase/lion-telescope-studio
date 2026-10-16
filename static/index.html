@@ -1,0 +1,93 @@
+<!doctype html>
+<!-- Created by Sunny Chase (https://github.com/sunnychase) in collaboration with Claude (Anthropic). -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1, user-scalable=no">
+<meta name="theme-color" content="#0b0c0e">
+<meta name="description" content="Lion Telescope Studio — the sky as the world's open telescopes see it, from gamma rays to radio, live.">
+<title>Lion Telescope Studio</title>
+<link rel="icon" href="img/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/app.css">
+<script src="vendor/astronomy/astronomy.browser.min.js"></script>
+</head>
+<body>
+<div id="sky" aria-label="the sky"></div>
+
+<header id="hud" class="glass-bar">
+  <div class="brand" title="Lion Telescope Studio">
+    <svg class="mark" viewBox="0 0 32 32" aria-hidden="true"><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3d58a"/><stop offset="1" stop-color="#b8892f"/></linearGradient></defs>
+      <circle cx="16" cy="16" r="13.5" fill="none" stroke="url(#g1)" stroke-width="1.6"/>
+      <path d="M9 21.5l9.5-9.5M17 10.5l4.5 4.5M20.2 7.3l4.5 4.5" stroke="url(#g1)" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M12.5 18l-2 7M13.5 19l3.5 5" stroke="url(#g1)" stroke-width="1.2" stroke-linecap="round"/>
+      <circle cx="7" cy="8" r="1.1" fill="#f1d48e"/><circle cx="25" cy="23" r="0.9" fill="#38e1ff"/><circle cx="11" cy="5.5" r="0.6" fill="#f1d48e"/></svg>
+    <span class="wm"><b>LION</b> TELESCOPE STUDIO</span>
+  </div>
+  <div id="band-now" class="band-now" aria-live="polite"></div>
+  <div class="hud-right">
+    <span id="utc" class="mono clock" title="Coordinated Universal Time">--:--:-- UTC</span>
+    <button class="icon-btn" id="btn-earth" title="Earth view: observatories and telescopes in orbit" aria-label="earth view"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.8 3 2.8 14 0 17M12 3.5c-2.8 3-2.8 14 0 17"/></svg></button>
+    <button class="icon-btn" id="btn-proj" title="Switch between a sphere and the whole sky at once" aria-label="projection"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="12" rx="9.5" ry="6"/><path d="M12 6v12M2.5 12h19"/></svg></button>
+    <button class="icon-btn" id="btn-grid" title="Coordinate grid" aria-label="grid"><svg viewBox="0 0 24 24"><path d="M4 9h16M4 15h16M9 4v16M15 4v16"/></svg></button>
+    <button class="icon-btn" id="btn-capture" title="Save a picture" aria-label="capture"><svg viewBox="0 0 24 24"><path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></button>
+    <button class="icon-btn" id="btn-share" title="Copy a link to this view" aria-label="share"><svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.66 0l3-3a4 4 0 0 0-5.66-5.66l-1 1M14 10a4 4 0 0 0-5.66 0l-3 3a4 4 0 0 0 5.66 5.66l1-1"/></svg></button>
+    <button class="icon-btn" id="btn-full" title="Fullscreen" aria-label="fullscreen"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+    <button class="icon-btn" id="btn-about" title="About & credits" aria-label="about"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></svg></button>
+  </div>
+</header>
+
+<aside id="panel" class="glass" aria-label="controls">
+  <div class="sheet-handle" id="sheet-handle" aria-hidden="true"><span></span></div>
+  <div class="panel-head">
+    <div class="search">
+      <svg viewBox="0 0 24 24" class="s-ic"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></svg>
+      <input id="search" type="search" placeholder="M31, Crab Nebula, Sirius, 10.68 41.27…" autocomplete="off" aria-label="search the sky">
+    </div>
+    <button class="icon-btn" id="btn-collapse" title="Hide panel" aria-label="hide panel"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg></button>
+  </div>
+  <nav class="tabs" id="tabs" role="tablist">
+    <button data-tab="sky" class="on">Sky</button>
+    <button data-tab="here">Here</button>
+    <button data-tab="live">Live</button>
+    <button data-tab="scopes">Telescopes</button>
+    <button data-tab="tonight">Tonight</button>
+  </nav>
+  <div class="panel-body">
+    <div class="tab-page" id="tab-sky"></div>
+    <div class="tab-page hidden" id="tab-here"><div class="empty"><div class="big-ic">✦</div><p><b>Click anywhere on the sky.</b></p><p class="muted">You will see what is there, how it looks in every kind of light, which planets circle its stars, and which of the world's telescopes have looked at it — and when.</p></div></div>
+    <div class="tab-page hidden" id="tab-live"></div>
+    <div class="tab-page hidden" id="tab-scopes"></div>
+    <div class="tab-page hidden" id="tab-tonight"></div>
+  </div>
+</aside>
+<button id="panel-open" class="glass icon-btn hidden" aria-label="open panel" title="Open panel"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+
+<div id="ladder" class="glass">
+  <div class="ladder-labels" id="ladder-labels"></div>
+  <input type="range" id="ladder-range" min="0" max="11" step="0.01" value="4" aria-label="wavelength">
+  <div class="ladder-ends small muted"><span>← higher energy</span><span id="ladder-hint">drag through the spectrum</span><span>longer waves →</span></div>
+</div>
+
+<div id="readout" class="mono small"></div>
+
+<div id="earth" class="hidden">
+  <div id="earth-globe"></div>
+  <div id="earth-info" class="glass"></div>
+  <button id="earth-close" class="glass btn">← Back to the sky</button>
+  <div id="earth-legend" class="glass small"></div>
+</div>
+
+<a id="maker" class="maker" href="https://github.com/sunnychase/lion-telescope-studio" target="_blank" rel="noopener" title="Created by Sunny Chase (github.com/sunnychase) in collaboration with Claude (Anthropic) · source on GitHub"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg><span>sunnychase</span></a>
+
+<div id="about" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="about-title">
+  <div class="modal-card glass">
+    <button class="icon-btn close" id="about-close" aria-label="close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <h2 id="about-title">Lion Telescope Studio</h2>
+    <p>The sky as the world's open telescopes see it — from gamma rays to radio waves — with what is happening up there right now.</p>
+    <div id="about-body"></div>
+  </div>
+</div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>

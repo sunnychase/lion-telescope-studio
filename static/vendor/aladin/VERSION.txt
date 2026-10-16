@@ -1,0 +1,1 @@
+aladin-lite 3.6.5 (npm), CDS Strasbourg
